@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | BBMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/app.css"></head>
+<body><header></header><main>
+<section class="card"><h1>Connecting Donors, Hospitals &amp; Saving Lives</h1><p>Live stock, camps and role-based login — all read from <code>blood_bank_db</code>.</p></section>
+<section><h2>Live Available Stock (non-expired, by blood group)</h2><div class="grid" id="stock"></div></section>
+<section class="card"><h2>Login</h2><div class="row"><div><label>Account type</label><select id="role"><option value="staff">Staff / Admin</option><option value="hospital">Hospital</option><option value="donor">Donor</option></select></div>
+<div><label id="idlabel">Staff</label><select id="pick"></select><input id="idin" placeholder="Donor ID or registered mobile number" style="display:none"></div></div><br><button id="go">Login</button>
+<p style="color:var(--mut)">The schema has no password columns, so login identifies you by an existing database record (staff/hospital by selection, donor by ID or mobile number).</p><div id="donorcard"></div></section>
+<section class="card"><h2>Blood Donation Camps</h2><div id="camps" class="row"></div></section>
+</main><div id="toast"></div><script src="js/common.js"></script><script src="js/index.js"></script></body></html>

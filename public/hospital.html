@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hospital Portal | BBMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/app.css"></head>
+<body><header></header><main>
+<section class="card"><h1 id="hn"></h1><span id="hi" style="color:var(--mut)"></span></section>
+<div class="row"><section class="card"><h2>Create Blood Request</h2><form id="fr"><div class="row"><div><label>Blood group needed</label><select name="blood_group_needed" id="rg"></select></div><div><label>Component</label><select name="component_type" id="rc"></select></div></div>
+<div class="row"><div><label>Quantity (units)</label><input name="quantity_required" type="number" min="1" value="1" required></div><div><label>Urgency</label><select name="urgency_level"><option>Routine</option><option>Emergency</option></select></div></div><br><button>Submit request</button></form></section>
+<section class="card"><h2>Compatibility &amp; Stock</h2><p>Compatible donor groups: <span id="cg">—</span></p><p>Compatible units in stock: <b id="cs">—</b></p></section></div>
+<section class="card"><h2>Blood Request Ledger</h2><div id="reqs"></div></section><section class="card"><h2>Issue Trail</h2><div id="issues"></div></section>
+</main><div id="toast"></div><script src="js/common.js"></script><script src="js/hospital.js"></script></body></html>

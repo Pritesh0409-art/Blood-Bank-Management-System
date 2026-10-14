@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Donor Intake | BBMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/app.css"></head>
+<body><header></header><main>
+<div class="row"><section class="card"><h2>Register Donor</h2><form id="fd"><label>Full name</label><input name="name" required maxlength="100"><div class="row"><div><label>Age (18–65)</label><input name="age" type="number" min="18" max="65" required></div><div><label>Weight kg (min 45)</label><input name="weight" type="number" min="45" required></div></div>
+<div class="row"><div><label>Gender</label><select name="gender"><option>Male</option><option>Female</option><option>Other</option></select></div><div><label>Blood group</label><select name="blood_group" id="bg"></select></div></div>
+<label>Contact (10 digits, unique)</label><input name="contact_no" pattern="[0-9]{10}" required><label>Address</label><input name="address" maxlength="200"><br><br><button>Register donor</button></form></section>
+<section class="card"><h2>Log Donation</h2><form id="fn"><label>Donor</label><select name="donor_id" id="dsel" required></select><label>Camp (optional)</label><select name="camp_id" id="csel"></select>
+<label>Quantity (ml)</label><input name="quantity_ml" type="number" value="450" min="1" required><label>Screening result</label><select name="screening_result"><option>Fit</option><option>Pending</option><option>Unfit</option></select>
+<p style="color:var(--mut)">Date is set by the database. Triggers enforce the 90/120-day gap and 45 kg minimum, and create the blood unit for Fit donations.</p><button>Record donation</button></form></section></div>
+<section class="card"><h2>Donor Registry</h2><div id="donors"></div></section>
+</main><div id="toast"></div><script src="js/common.js"></script><script src="js/intake.js"></script></body></html>

@@ -1,0 +1,18 @@
+:root{--p:#b70011;--bg:#f8f9ff;--card:#fff;--mut:#5c403c;--ok:#006646;--line:#e5eeff;--err:#ba1a1a}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 Inter,system-ui,sans-serif;background:var(--bg);color:#0b1c30}
+header{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;background:#fff;box-shadow:0 1px 6px #0001;flex-wrap:wrap}
+header b{color:var(--p);font-size:18px}nav a{margin-right:1rem;color:var(--mut);text-decoration:none;font-weight:600}nav a:hover,nav a.on{color:var(--p)}
+main{max-width:1200px;margin:auto;padding:1.5rem;display:grid;gap:1.5rem}
+.card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 1px 4px #0001;overflow-x:auto}
+h1,h2{margin:.2rem 0 .8rem;font-family:'Plus Jakarta Sans',sans-serif}h2{font-size:18px}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat{text-align:center;border-top:4px solid var(--ok)}.stat.low{border-color:var(--err)}.stat b{font-size:26px;display:block}
+.k{border-left:4px solid var(--p)}.k b{font-size:28px;display:block}
+table{width:100%;border-collapse:collapse}th{text-align:left;font-size:11px;text-transform:uppercase;color:var(--mut);background:#eff4ff;padding:8px}td{padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tag{padding:2px 8px;border-radius:99px;background:#dae2fd;font-weight:600;font-size:12px}.Emergency,.Expired,.Discarded,.Unfit,.low-t{background:#ffdad6;color:#93000a}
+.Available,.Fulfilled,.Fit,.yes{background:#85f8c4;color:#002114}.Pending{background:#e5eeff}
+label{display:block;font-weight:600;font-size:12px;margin:.6rem 0 .2rem}input,select,textarea,button{font:inherit;padding:8px 10px;border-radius:8px;border:1px solid #d3e4fe;width:100%;background:#fff}
+button{background:var(--p);color:#fff;border:0;font-weight:600;cursor:pointer;width:auto}button.sec{background:#dce9ff;color:#0b1c30}td button{padding:3px 10px}
+.row{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.bar{height:8px;background:#d3e4fe;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--p)}
+#toast{position:fixed;right:1rem;bottom:1rem;padding:.8rem 1.2rem;border-radius:10px;background:#213145;color:#fff;display:none;max-width:420px;z-index:9}#toast.err{background:var(--err)}
+dialog{border:0;border-radius:12px;padding:1.25rem;width:min(520px,92vw);box-shadow:0 8px 30px #0005}

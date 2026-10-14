@@ -1,0 +1,1 @@
+{"name":"bbms","version":"1.0.0","scripts":{"setup":"node setup.js","start":"node server.js"},"dependencies":{"express":"^4.19.2","mysql2":"^3.9.7"}}

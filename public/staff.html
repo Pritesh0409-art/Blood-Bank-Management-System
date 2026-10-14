@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Staff Dashboard | BBMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/app.css"></head>
+<body><header></header><main>
+<section class="grid" id="kpi"></section>
+<section class="card"><h2>Open Hospital Requests</h2><div id="reqs"></div></section>
+<section class="card"><h2>Blood Inventory</h2><div class="row"><div><input id="srch" placeholder="Search unit ID / donor"></div><div><select id="fg"><option value="">All groups</option></select></div><div><select id="fs"><option value="">All statuses</option><option>Available</option><option>Issued</option><option>Reserved</option><option>Expired</option><option>Discarded</option></select></div></div><br><div id="units"></div></section>
+<section class="card"><h2>Issue Records (donor → unit → request → hospital → staff)</h2><div id="issues"></div></section>
+<section class="card"><h2>Camp Collection Progress</h2><div id="camps" class="row"></div></section>
+<dialog id="dlg"><h2 id="dt">Issue unit</h2><label>Compatible available unit</label><select id="du"></select><label>Issuing staff</label><select id="ds"></select><br><br><button id="dok">Confirm &amp; write ISSUE_RECORD</button> <button class="sec" onclick="dlg.close()">Cancel</button></dialog>
+</main><div id="toast"></div><script src="js/common.js"></script><script src="js/staff.js"></script></body></html>
