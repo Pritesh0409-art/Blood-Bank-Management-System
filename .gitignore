@@ -1,24 +1,7 @@
-# Node.js dependencies
-node_modules/
 
-# Environment variables and secrets
+node_modules/
 .env
 .env.*
 !.env.example
-
-# Log files
-logs/
-*.log
 npm-debug.log*
-
-# Operating system files
 .DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE settings
-.idea/
-
-# Temporary files
-tmp/
-temp/
