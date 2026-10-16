@@ -49,7 +49,7 @@ route('get', 'public', async () => ({
                COUNT(bu.unit_id) AS available_units
         FROM (
             SELECT DISTINCT donor_group AS blood_group
-            FROM COMPATIBILITY
+            FROM compatibility
         ) bg
         LEFT JOIN BLOOD_UNIT bu
             ON bu.blood_group = bg.blood_group
@@ -61,8 +61,10 @@ route('get', 'public', async () => ({
 
     camps: await q(`
         SELECT c.*,
-               COUNT(CASE WHEN dn.screening_result = 'Fit'
-                          THEN 1 END) AS collected
+               COUNT(
+                   CASE WHEN dn.screening_result = 'Fit'
+                   THEN 1 END
+               ) AS collected
         FROM CAMP c
         LEFT JOIN DONATION dn ON dn.camp_id = c.camp_id
         GROUP BY c.camp_id
@@ -127,7 +129,7 @@ route('get', 'donor/:id', async req => {
         donor,
         history: await q(`
             SELECT *
-            FROM donor_history_view
+            FROM DONOR_HISTORY_VIEW
             WHERE donor_id = ?
             ORDER BY donation_date
         `, [req.params.id])
@@ -137,8 +139,8 @@ route('get', 'donor/:id', async req => {
 route('get', 'staff-dash', async () => {
     const [kpi] = await q(`
         SELECT
-            (SELECT COUNT(*) FROM available_stock_view) AS available,
-            (SELECT COUNT(*) FROM pending_requests_view) AS pending,
+            (SELECT COUNT(*) FROM AVAILABLE_STOCK_VIEW) AS available,
+            (SELECT COUNT(*) FROM PENDING_REQUESTS_VIEW) AS pending,
             (SELECT COUNT(*) FROM DONOR) AS donors,
             (
                 SELECT COUNT(*)
@@ -174,8 +176,9 @@ route('get', 'staff-dash', async () => {
             FROM BLOOD_REQUEST br
             JOIN HOSPITAL h ON h.hospital_id = br.hospital_id
             WHERE br.status IN ('Pending', 'Partially Fulfilled')
-            ORDER BY FIELD(br.urgency_level, 'Emergency', 'Routine'),
-                     br.request_date
+            ORDER BY FIELD(
+                br.urgency_level, 'Emergency', 'Routine'
+            ), br.request_date
         `),
 
         units: await q(`
@@ -185,7 +188,9 @@ route('get', 'staff-dash', async () => {
                    bu.collection_date,
                    bu.expiry_date,
                    bu.status,
-                   DATEDIFF(bu.expiry_date, CURDATE()) AS days_left,
+                   DATEDIFF(
+                       bu.expiry_date, CURDATE()
+                   ) AS days_left,
                    d.name AS donor_name
             FROM BLOOD_UNIT bu
             JOIN DONATION dn ON dn.donation_id = bu.donation_id
@@ -220,11 +225,11 @@ const issues = hospitalId => q(`
 
 route('get', 'request/:id/units', req => q(`
     SELECT v.*
-    FROM available_stock_view v
+    FROM AVAILABLE_STOCK_VIEW v
     JOIN BLOOD_REQUEST br
         ON br.request_id = ?
         AND v.component_type = br.component_type
-    JOIN COMPATIBILITY c
+    JOIN compatibility c
         ON c.recipient_group = br.blood_group_needed
         AND c.donor_group = v.blood_group
     ORDER BY v.expiry_date
@@ -235,18 +240,18 @@ route('get', 'compat', async req => {
 
     const groups = await q(`
         SELECT donor_group
-        FROM COMPATIBILITY
+        FROM compatibility
         WHERE recipient_group = ?
         ORDER BY donor_group
     `, [group]);
 
     const [result] = await q(`
         SELECT COUNT(*) AS n
-        FROM available_stock_view
+        FROM AVAILABLE_STOCK_VIEW
         WHERE component_type = ?
           AND blood_group IN (
               SELECT donor_group
-              FROM COMPATIBILITY
+              FROM compatibility
               WHERE recipient_group = ?
           )
     `, [component, group]);
